@@ -1,1 +1,3 @@
 # PracticasCaminos
+
+npm start
