@@ -1,0 +1,36 @@
+<h3>Agregar Station</h3>
+<form method="post" action="/station/add">
+    <label> Nombre  Estacion</label> <br>
+    <input type="text" name = "station_name">
+    <br>
+    <label> Latitud</label> <br>
+    <input type="text" name="station_latitude">
+    <br>
+    <label> Longitud</label><br>
+    <input type="text" name="station_longitude">
+    <br>
+    <input type="submit" value="Submit">
+</form>
+
+<h3>Crear grafo myGraphStar en Neo4j</h3>
+<form method="post" action="/">
+    <label> Crea myGraphStar</label> <br>
+    <br>
+    <input type = "submit" value="Crear grafo A* (myGraphStar)">
+</form>
+
+
+
+<h1> Station</h1>
+<ul>
+<% station.forEach(function(station){ %>
+    <li><%= station.name %> </li>
+<% }) %>
+</ul>
+
+<h1> Location</h1>
+<ul>
+<% location.forEach(function(location){ %>
+    <li><%= location.name %> </li>
+<% }) %>
+</ul>
