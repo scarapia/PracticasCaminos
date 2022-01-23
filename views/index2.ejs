@@ -1,1 +1,146 @@
 
+<h3>Agregar nodo a  Station</h3>
+<form method="post" action="/station/add">
+    <label> Nombre  Nodo</label> <br>
+    <input type="text" name = "station_name">
+    <br>
+    <label> Latitud</label> <br>
+    <input type="number" name="station_latitude">
+    <br>
+    <label> Longitud</label><br>
+    <input type="number" name="station_longitude">
+    <br>
+    <input type="submit" value="Crear Nodo">
+</form>
+
+<table border="1">    
+        <tr>
+            <th>Nombre</th>
+                <% station.forEach(function(station){ %>
+                <td>   <%= station.name %> </td>
+                <% }) %>
+        </tr>    
+        <tr>
+            <th>Latitud </th>
+                <% station.forEach(function(station){ %>
+                <td>   <%= station.latitude %> </td>
+                <% }) %>
+        </tr> 
+        <tr>       
+            <th>Longitud</th>
+                <% station.forEach(function(station){ %>
+                <td>   <%= station.longitude %> </td>
+                <% }) %>
+        </tr>        
+</table>
+<%- include('relconnection')%>;
+
+<h3>Conectar nodos en  Station</h3>
+<form method="post" action="/station/startfinish/add">
+    <label> Nombre nodo inicio</label> <br>
+    <input type="text" name = "stationStart_name">
+    <br>
+    <label> Nombre nodo destino</label> <br>
+    <input type="text" name="stationFinish_name">
+    <br>
+    <label> Distancia</label><br>
+    <input type="number" name="station_distance">
+    <br>
+    <input type="submit" value="Conectar Nodos">
+</form>
+
+<h3>Borrar nodo en  Station</h3>
+<form method="post" action="/station/delete">
+    <label> Nombre nodo a borrar</label> <br>
+    <input type="text" name = "stationDelete_name">
+    <br>
+    
+    <input type="submit" value="Borrar Nodo">
+</form>
+
+<h3>Algoritmo  A-Star* en nodos en  Station</h3>
+<form method="post" action="/station/AStar">
+    <label> Nombre nodo fuente (Source)</label> <br>
+    <input type="text" name = "stationAStarSource_name">
+    <br>
+    <label>Nombre nodo objetivo (Target)</label><br>
+    <input type="text" name = "stationAStarTarget_name">
+    <br>
+    <input type="submit" value="Ejecutar y crear camino  A*STAR">
+</form>
+
+<h3>Borrar Camino A*Star en  Station</h3>
+<form method="post" action="/station/AStar/delete">
+    <label> Borrar Camino A*STAR</label> <br>
+    <br>
+    <input type="submit" value="Borrar Camino A*STAR">
+</form>
+
+<form action="https://www.w3docs.com/" method="get" target="_blank">
+    <button type="submit">Click me</button>
+ </form>
+
+ <form action="index"  method="get" target="_blank">
+    <input type="submit">Click me2 
+ </form>
+
+<h3>Crear grafo myGraphStar en Neo4j</h3>
+<form method="post" action="/myGraphStar">
+    <label> Crea myGraphStar</label> <br>
+    <br>
+    <input type = "submit" value="Crear grafo A* (myGraphStar)">
+</form>
+
+<h3>Ejecutar Algoritmo Yens a  myGraphStar en Neo4j</h3>
+<form method="post" action="/myGraphStarAlgoYens">
+    <label> Correr Algortimo Yens en myGraphStar</label> <br>
+    <br>
+    <input type = "submit" value="Correr algoritmo Yens en  grafo A* (myGraphStar)">
+</form>
+
+<h3>Borrar Grafo  myGraphStar en Neo4j</h3>
+<form method="post" action="/myGraphStarDelete">
+    <label> Borrar Grafo myGraphStar</label> <br>
+    <br>
+    <input type = "submit" value="Borrar grafo A* (myGraphStar)">
+</form>
+
+<h3>Crear grafo myGraphST en Neo4j</h3>
+<form method="post" action="/myGraphST">
+    <label> Crea myGraphST</label> <br>
+    <br>
+    <input type = "submit" value="Crear grafo SourceTarget (myGraphST)">
+</form>
+
+
+<h3>Crear grafo myGraphSS en Neo4j</h3>
+<form method="post" action="/myGraphSS">
+    <label> Crea myGraphSS</label> <br>
+    <br>
+    <input type = "submit" value="Crear grafo SingleSource (myGraphSS)">
+</form>
+
+<h3>Crear grafo myGraphYe en Neo4j</h3>
+<form method="post" action="/myGraphYe">
+    <label> Crea myGraphSS</label> <br>
+    <br>
+    <input type = "submit" value="Crear grafo Yens (myGraphYe)">
+</form>
+
+
+<h1> Nodos en Station (Nombre/Latitud/Longitud)</h1>
+<ul>
+<% station.forEach(function(station){ %>
+    <li><%= station.name %>
+        <%= station.latitude %>
+        <%= station.longitude %>
+    </li>
+<% }) %>
+</ul>
+
+<h1> Location</h1>
+<ul>
+<% location.forEach(function(location){ %>
+    <li><%= location.name %> </li>
+<% }) %>
+</ul>
