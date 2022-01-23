@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>DataViz</title>
+        <style type="text/css">
+            #viz{
+                width: 900px;
+                height: 700px;
+            }
+        </style>
+        <script src="https://cdn.neo4jlabs.com/neovis.js/v1.5.0/neovis.js"></script>
+    </head>
+    <h3>nodos   relacion ROAD  Station</h3>
+    <script>
+        function draw(){
+            var config = {
+                container_id: "viz",
+                server_url: "bolt://localhost:7687",
+                server_user: "neo4j",
+                server_password: "password",
+                labels: {
+                    "Location": {
+                        caption: "name",
+                        //sizeCypher: "MATCH p=()-[r:PATHSS]->() RETURN p"
+                        
+                    },
+                    "Station": {
+                        caption: "name"
+                    }
+
+                },
+                relationships: {
+                    "PATHSS": {
+                        caption: true,
+                        thickness: "totalCost"
+                        
+                    },
+                    "PATHST": {
+                        caption: true,
+                        thickness:"totalCost"
+
+                    },
+                    "PATHStar": {
+                        caption: true,
+                        thickness:"totalCost"
+
+                    },
+                    "PATHYe": {
+                        caption: true,
+                        thickness:"totalCost"
+
+                    },
+                    "CONNECTION": {
+                        caption: false
+                    },
+                    "ROAD": {
+                        caption:"cost",
+                        thickness:"cost"
+                    }
+
+                },
+                initial_cypher:  " MATCH p=()-[r:ROAD]->() RETURN p "
+
+
+            }
+
+            var viz = new NeoVis.default (config);
+            viz.render();
+            console.log(viz);
+        }
+         
+    </script>
+    <body onload="draw()">
+        <div id = "viz"></div>
+
+    <label for="algorithms">Elige un algoritmo:</label> 
+        <select name="algorithms" id="algorithms">
+            <option value="source-target">Source-Target</option>
+            <option value="single-source">Single-Source</option>
+            <option value="astar">A*</option>
+            <option value="yens">Yens</option>
+          </select>
+
+        Cypher query: <textarea rows="4" cols=50 id="cypher"></textarea><br>
+        <input type="submit" value="Submit" id="reload">
+        <input type="submit" value="Stabilize" id="stabilize">
+    </body>
+    <script>
+        $("#reload").click(function() {
+    
+            var cypher = $("#cypher").val();
+    
+            if (cypher.length > 3) {
+                viz.renderWithCypher(cypher);
+            } else {
+                console.log("reload");
+                viz.reload();
+    
+            }
+    
+        });
+    
+        $("#stabilize").click(function() {
+            viz.stabilize();
+        })
+    
+    </script>
+</html>
