@@ -8,7 +8,7 @@
     "devserver": "nodemon index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "sergio-carapia-gonzalez",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
